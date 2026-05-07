@@ -1,0 +1,8 @@
+# Ignore plugins directory (reinstalled via setup.sh)
+plugged/
+
+# Ignore temp files
+.netrwhist
+*~
+*.swp
+*.swo
