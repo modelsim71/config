@@ -56,6 +56,17 @@ install_tpm() {
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
+# Install tmux-yank plugin
+install_tmux_yank() {
+    if [ -d "$HOME/.tmux/plugins/tmux-yank" ]; then
+        log_info "tmux-yank already installed"
+        return
+    fi
+    
+    log_info "Installing tmux-yank plugin..."
+    git clone git@github.com:tmux-plugins/tmux-yank.git ~/.tmux/plugins/tmux-yank
+}
+
 # Copy tmux config
 copy_config() {
     log_info "Copying tmux config to ~/"
@@ -84,10 +95,11 @@ main() {
     fi
     
     install_tpm
+    install_tmux_yank
     copy_config
     
     log_info "Setup complete!"
-    log_info "Run 'tmux' to start tmux, then press 'prefix + I' to install plugins"
+    log_info "Run 'tmux' to start tmux, then press 'prefix + I' to install remaining plugins"
 }
 
 main "$@"
